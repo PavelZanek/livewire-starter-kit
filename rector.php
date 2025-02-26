@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Rector\Caching\ValueObject\Storage\FileCacheStorage;
 use Rector\Config\RectorConfig;
+use Rector\EarlyReturn\Rector\Return_\ReturnBinaryOrToEarlyReturnRector;
 use Rector\Set\ValueObject\SetList;
 use Rector\Transform\Rector\String_\StringToClassConstantRector;
 use Rector\ValueObject\PhpVersion;
@@ -26,6 +27,10 @@ return static function (RectorConfig $rectorConfig): void {
         StringToClassConstantRector::class => [
             __DIR__.'/tests/Feature/Auth/AuthenticationTest.php',
             __DIR__.'/routes/auth.php',
+        ],
+
+        ReturnBinaryOrToEarlyReturnRector::class => [
+            __DIR__.'/app/Providers/TelescopeServiceProvider.php',
         ],
     ]);
 
